@@ -1,9 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
+// to make sure our mongodb and secretkey which is use in jwt is not expose
 const dotenv = require("dotenv");
+// routers
 const noteRouter = require("./routes/note.route");
 const authRouter = require("./routes/auth.route");
 
+// .config() so we can use the functions
 dotenv.config();
 const app = express();
 const PORT = 3000;
@@ -18,6 +21,7 @@ mongoose
   });
 
 app.use(express.json());
+// diffrent routes
 app.use("/v1/api/note", noteRouter);
 app.use("/v1/api/auth", authRouter);
 
